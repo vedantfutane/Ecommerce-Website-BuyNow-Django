@@ -31,3 +31,11 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 - Python 3.x
 - Django 3.x or higher
+
+
+# Payment gateway
+- Razorpay is used as a payment gateway
+- while running the project your account should be opened
+
+Check my RAZOR_KEY_ID and RAZOR_KEY_SECRET in settings.py file
+Recommend to use your own
