@@ -1,0 +1,151 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block title %}Checkout{% endblock title %}
+
+
+{% block navelement %}
+
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'upcoming' %}">Upcomings</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li id="bar_cart"><a class="active" href="{% url 'showcart' %}"><i class="fas fa-cart-plus">&nbsp;</i>Cart</a></li>
+      <a href="#" id="cross"><i class="fas fa-times"></i></a>
+  
+{% endblock navelement %}{% block navelementlast %}
+<ul id="nav">
+  <li><a href="{% url 'login' %}">Login</a></li>
+  <li><a href="{% url 'customerregistration' %}">Registration</a></li>
+</ul>
+{% endblock navelementlast %}
+
+{% block main-content %}
+
+<div class="container"><br>
+  <h2 style="text-align:center;">Checkout</h2>
+  {% if messages %}
+    {% for msg in messages %}
+      <div class="alert alert-danger" role="alert">
+        {{msg}}
+      </div>
+    {% endfor %}
+  {% endif %}
+  <div class="row mt-5">
+    <div class="col-sm-6">
+      <h4>Order Summary</h4>
+      <hr>
+      {% for item in cart_items %}
+        <div class="card mb-3">
+          <div class="row">
+            <div class="col-sm-3 text-center align-self-center" style="margin-left:10px;"><img src="{{item.product.product_image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm"> </div>
+            <div class="col-sm-7">
+              <div>
+                <div class="card-body">
+                  <h5>Product: {{item.product.title}}</h5>
+                  <p>Quantity: {{item.quantity}}</p>
+                  <p class="fw-bold">Price: {{item.product.discounted_price}}</p>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+      {% endfor %}
+      <p class="fw-bold">Total Cost: Rs. {{famount}} + Rs. 70= {{totalamount}}</p>
+      <small>Terms and Condition: All purchases of physical items from BuyNow are made pursuant to a shipment contract. This means that the risk of loss and title for such items pass to you upon our delivery to the carrier.</small>
+    </div>
+    <div class="col-sm-4 offset-sm-1">
+      <h4>Select Shipping Address</h4>
+      <hr>
+      <form action="" method="POST" id="myform">
+        {% csrf_token %}
+        {% for ad in add %}
+          <div class="card">
+            <div class="card-body">
+              <h5>{{ad.name}}</h5>
+              <p>Mobile: {{ad.mobile}}</p>
+              <p>{{ad.locality}} {{ad.city}} {{ad.state}} {{ad.zipcode}}</p>
+            </div>
+          </div>
+          <div class="form-check mt-2 mb-5">
+            <input class="form-check-input" type="radio" name="custid" id="custadd{{forloop.counter}}" value="{{ad.id}}"> 
+            <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">Address: {{forloop.counter}} </label>
+          </div>
+        {% endfor %}
+        <div class="form-check mb-3">
+          <label for="totamount" class="form-label fw-bold">Total Amount</label>
+          <input type="number" class="form-control fw-bold" name="totamount" value={{totalamount}} readonly>
+        </div>
+        <div class="text-end">
+          {% comment %}<button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button> 
+           <div id="paypal-button-container"></div> {% endcomment %}
+      <button id="rzp-button1" type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Payment</button> 
+        </div>
+
+      </form>
+      
+    </div>
+  </div><br><br>
+</div>
+    
+{% endblock main-content %}
+
+
+{% block payment-gateway %}
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  var options = {
+    "key": "rzp_test_xhEldBJJEALeNB", // Enter the Key ID generated from the Dashboard
+    "amount": "{{razoramount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "BuyNow",
+    "description": "Buy Products",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+      console.log("success")
+      var form=document.getElementById("myform");
+        //alert(response.razorpay_payment_id);
+        //alert(response.razorpay_order_id);
+        //alert(response.razorpay_signature)
+        window.location.href=`http://localhost:8000/paymentdone?order_id=${response.razorpay_order_id}&payment_id=${response.razorpay_payment_id}&cust_id=${form.elements['custid'].value}`
+    },
+
+    
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+  var rzp1 = new Razorpay(options);
+  rzp1.on('payment.failed', function (response){
+        //alert(response.error.code);
+        alert(response.error.description);
+        //alert(response.error.source);
+        //alert(response.error.step);
+        //alert(response.error.reason);
+        //alert(response.error.metadata.order_id);
+        //alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+
+  // Function to remove products from the cart
+  function removeProductsFromCart() {
+      // Logic to remove products from the cart (you might need to adjust this based on your implementation)
+      console.log("Products removed from cart");
+      // Redirect to the payment done page after removing products from the cart
+      window.location.href = "http://localhost:8000/paymentdone";
+  }
+
+  document.getElementById('placeOrderBtn').addEventListener('click', function(event) {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+      // Call the function to remove products from the cart
+      removeProductsFromCart();
+  });
+</script>
+{% endblock payment-gateway %}
+
+

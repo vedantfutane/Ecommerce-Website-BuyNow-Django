@@ -1,0 +1,403 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block navelement %}
+
+
+    <li><a class="active" href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'upcoming' %}">Upcomings</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li id="bar_cart"><a href="{% url 'showcart' %}"><i class="fas fa-cart-plus">&nbsp;</i>Cart</a></li>
+      <a href="#" id="cross"><i class="fas fa-times"></i></a>
+  
+{% endblock navelement %}
+
+{% block navelementlast %}
+
+<ul id="nav">
+  <li><a href="{% url 'login' %}">Login</a></li>
+  <li><a href="{% url 'customerregistration' %}">Registration</a></li>
+</ul>
+
+{% endblock navelementlast %}
+
+
+{% block slide %}
+<section id="slide">
+    <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="{% static "myapp/image/slide1_watch.jpg" %}" class="d-block w-100" alt="Slide 2 Offer" >
+            <div class="carousel-caption d-none d-md-block">
+              <a href="#"><button  type="button" class="btn">Shop Now</button></a>
+              <p><b><i>A Watch for every wrist.</i></b></p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="{% static "myapp/image/slide2_dress.jpg" %}" class="d-block w-100" alt="Slide 1 Offer" >
+            <div class="carousel-caption d-none d-md-block">
+                <a href="#"><button  type="button" class="btn">Shop Now</button></a>
+                <p><b><i>Fashion never end.</i></b></p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static "myapp/image/slide3_book.jpg"%}" class="d-block w-100" alt="Slide 3 Offer" >
+            <div class="carousel-caption d-none d-md-block">
+                <a href="#"><button  type="button" class="btn">Shop Now</button></a>
+                <p><b><i>All you need learn with this.</i></b></p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</section>
+{% endblock slide %}
+
+{% block feature %}
+
+<section id="feature" class="section_prod">
+  <div class="feat-space">
+    <img src="{% static "myapp//image/offer.png"%}" alt="Offer Image">
+    <h5>Special Offers</h5>
+  </div>
+
+  <div class="feat-space">
+    <img src="{% static "myapp/image/delivery.png"%}" alt="Delivery Image">
+    <h5>Fast Delivery</h5>
+  </div>
+
+  <div class="feat-space">
+    <img src="{% static "myapp/image/24service.png"%}" alt="Support Image">
+    <h5>24/7 Support</h5>
+  </div>
+
+  <div class="feat-space">
+    <img src="{% static "myapp/image/quality (2).png"%}" alt="QualityImage">
+    <h5>Quality Assurance</h5>
+  </div>
+
+  <div class="feat-space">
+    <img src="{% static "myapp/image/return (2).png"%}" alt="Offer Image">
+    <h5>Return Policy</h5>
+  </div>
+</section><hr>
+{% endblock feature %}
+
+{% block main-content %}
+<section id="product_deals" class="section-prod">
+  <h2>Featured Products</h2>
+  <p>More savings equals more fun this Summer!</p>
+  <div class="prod_box">
+    <div class="prod">
+      <img src="{% static "myapp/image/product/prod1.png" %}" alt="Product1">
+      <div class="info">
+        <span>Noise</span>
+        <h5>Noise Pulse 2 Max Smart Watch(Jet Black)</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>₹1,699</h4>
+      </div>
+      <a href="{% url 'shop' 'PR1' %}" class="cartbuy"><i class="fas fa-cart-plus"></i></a>
+    </div>
+
+    <div class="prod">
+      <div class="prod_img"><img src="{% static "myapp/image/product/prod2.jpg" %}" alt="Product2" ></div>
+      <div class="info">
+        <span>boAt</span>
+        <h5>boAt Airdopes Genesis with Noise detection</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>₹1,799</h4>
+      </div>
+      <a href="{% url 'shop' 'PR2' %}" class="cartbuy"><i class="fas fa-cart-plus"></i></a>
+    </div>
+
+    <div class="prod">
+      <img src="{% static "myapp/image/product/prod3.jpg" %}" alt="Product3">
+      <div class="info">
+        <span>Woodland</span>
+        <h5>Woodland Mens Ogcc 3474119 Sneaker</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>₹2,405</h4>
+      </div>
+      <a href="{% url 'shop' 'PR3' %}" class="cartbuy"> <i class="fas fa-cart-plus"></i></i>
+      </a>
+    </div>
+
+    <div class="prod">
+      <img src="{% static "myapp/image/product/prod4.jpg" %}"alt="Product4">
+      <div class="info">
+        <span>Lyriq</span>
+        <h5>Lyriq Casual Shirt for Men|| Shirt for Men</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>₹549</h4>
+      </div>
+      <a href="{% url 'shop' 'PR4' %}" class="cartbuy"><i class="fas fa-cart-plus"></i></a>
+    </div>
+
+    <div class="prod">
+      <img src="{% static "myapp\image\product\prod5.jpg" %}" alt="Product5">
+      <div class="info">
+        <span>MANA</span>
+        <h5>MANA OUD Shaey One Perfume for Men, Premium Brand</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>₹23,500</h4>
+      </div>
+      <a href="{% url 'shop' 'PR5' %}" class="cartbuy"><i class="fas fa-cart-plus"></i></a>
+    </div>
+
+    <div class="prod">
+      <img src="{% static "myapp\image\product\prod6.jpg" %}" alt="Product6">
+      <div class="info">
+        <span>FIILIMER</span>
+        <h5>FIILIMER Men's Fleece Lined Jean Denim Jacket</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>₹12,585</h4>
+      </div>
+      <a href="{% url 'shop' 'PR6' %}" class="cartbuy"><i class="fas fa-cart-plus"></i></a>
+    </div>
+
+    <div class="prod">
+      <img src="{% static "myapp\image\product\prod7.jpg" %}" alt="Product7">
+      <div class="info">
+        <span>Steve Madden</span>
+        <h5>Steve Madden BWinona Satchel Bag</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>₹15,517</h4>
+      </div>
+      <a href="{% url 'shop' 'PR7' %}" class="cartbuy"><i class="fas fa-cart-plus"></i></a>
+    </div>
+
+    <div class="prod">
+      <img src="{% static "myapp\image\product\prod8.jpg" %}" alt="Product8">
+      <div class="info">
+        <span>Seiko Prospex</span>
+        <h5>Seiko Prospex Alpinist Limited Model SBDC091</h5>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>₹1,36,303</h4>
+      </div>
+      <a href="{% url 'shop' 'PR8' %}" class="cartbuy"  ><i class="fas fa-cart-plus"></i></a>
+    </div>
+  </div>
+</section>
+
+<section id="banner" class="section-margin" style="background-image:url({% static "myapp/image/baner_off.jpg" %})"; >
+  
+  <h4>Offers and Discount</h4>
+  <h2>Up to <span>50% Off</span> on Groceries and Accessories</h2>
+  <button class="normal">Explore More</button>
+  
+</section><hr>
+
+<section id="product_section" class="section-prod">
+  <h2>Top Bestsellers</h2>
+  <p class="top_line">Top hot selling products of this month for you .</p>
+  <h3>Watch Bestsellers</h3>
+  <p><i>Best Brands with best deals.</i></p>
+  <div class="prod_box">
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/watch1.jpg"%}" alt="Product1"></a>
+      <div class="info">
+        <span>Min. 72% Off</span>
+        <h3><s>₹5,999</s>&nbsp;&nbsp;₹1,699</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/watch2.jpg"%}" alt="Product2"></a>
+      <div class="info">
+        <span>Min. 85% Off</span>
+        <h3><s>₹9,990</s>&nbsp;&nbsp;₹1,499</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/watch3.jpg"%}" alt="Product3"></a>
+      <div class="info">
+        <span>Min. 80% Off</span>
+        <h3><s>₹19,999</s>&nbsp;&nbsp;₹3,999</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/watch4.jpg"%}" alt="Product4"></a>
+      <div class="info">
+        <span>Min. 62% Off</span>
+        <h3><s>₹1,999</s>&nbsp;&nbsp;₹759</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/watch5.jpg"%}" alt="Product5"></a>
+      <div class="info">
+        <span>Min. 20% Off</span>
+        <h3><s>₹3495</s>&nbsp;&nbsp;₹2,796</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="product_section" class="section-prod">
+  <h3>Clothes Bestsellers</h3>
+  <p><i>Starting just from 199.</i></p>
+  <div class="prod_box">
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/clothes1.jpg"%}" alt="Product1"></a>
+      <div class="info">
+        <span>Min. 82% Off</span>
+        <h3><s>₹1,999</s>&nbsp;&nbsp;₹349</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/clothes2.jpg"%}" alt="Product2"></a>
+      <div class="info">
+        <span>Min. 50% Off</span>
+        <h3><s>₹999</s>&nbsp;&nbsp;₹499</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/clothes3.jpg"%}" alt="Product3"></a>
+      <div class="info">
+        <span>Min. 60% Off</span>
+        <h3><s>₹1,599</s>&nbsp;&nbsp;₹644</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/clothes4.jpg"%}" alt="Product4"></a>
+      <div class="info">
+        <span>Min. 32% Off</span>
+        <h3><s>₹9,999</s>&nbsp;&nbsp;₹7,499</h3>
+      </div>
+    </div>
+    
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/clothes5.jpg"%}" alt="Product5"></a>
+      <div class="info">
+        <span>Min. 47% Off</span>
+        <h3><s>₹4,999</s>&nbsp;&nbsp;₹2,699</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="product_section" class="section-prod">
+  <h3>Groceries Bestsellers</h3>
+  <p><i>Great deals upto 40% Off</i></p>
+  <div class="prod_box">
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/grocery1.jpg"%}" alt="Product1"></a>
+      <div class="info">
+        <span>Min. 25% Off</span>
+        <h3><s>₹300</s>&nbsp;&nbsp;₹225</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/grocery2.jpg"%}" alt="Product2"></a>
+      <div class="info">
+        <span>Min. 19% Off</span>
+        <h3><s>₹640</s>&nbsp;&nbsp;₹531</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/grocery3.jpg"%}" alt="Product3"></a>
+      <div class="info">
+        <span>Min. 20% Off</span>
+        <h3><s>₹499</s>&nbsp;&nbsp;₹399</h3>
+      </div>
+    </div>
+
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/grocery4.jpg"%}" alt="Product4"></a>
+      <div class="info">
+        <span>Min. 5% Off</span>
+        <h3><s>₹400</s>&nbsp;&nbsp;₹380</h3>
+      </div>
+    </div>
+    
+    <div class="prod">
+      <a href="#"><img src="{% static "myapp/image/bestsellers/grocery5.jpg"%}" alt="Product5"></a>
+      <div class="info">
+        <span>Min. 5% Off</span>
+        <h3><s>₹380</s>&nbsp;&nbsp;₹360</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="banner2" class="section-margin" style="background-image:url({% static "myapp/image/last.png" %})";>
+  <h4>Black Day Sale</h4>
+  <h2>Huge Discount Alert: Enjoy <span>70% Off</span> on Purchases Over $5000!</h2>
+  <a href="#"><button class="normal" >Shop Now</button></a>
+</section>
+
+<section id="newsletter" class="section-prod" >
+  <div class="newsletter_box">
+    <h1>News Letter</h1>
+    <p>Stay up to date with our latest offers and promotions!</p>
+    
+    <form class="email-form">
+      <input type="email" class="email-input" placeholder="Enter your email address" required>
+      <button type="submit" class="signup-button">Sign Up</button>
+    </form>
+  </div>
+</section>
+
+{% endblock main-content %}
+

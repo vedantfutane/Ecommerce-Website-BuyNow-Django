@@ -1,0 +1,57 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock title %}
+
+{% block navelement %}
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'upcoming' %}">Upcomings</a></li>
+    <li><a  href="{% url 'about' %}">About</a></li>
+    <li><a class="active" href="{% url 'contact' %}">Contact</a></li>
+    <li id="bar_cart"><a href="{% url 'showcart' %}"><i class="fas fa-cart-plus">&nbsp;</i>Cart</a></li>
+      <a href="#" id="cross"><i class="fas fa-times"></i></a>
+  
+{% endblock navelement %}
+
+{% block navelementlast %}
+<ul id="nav">
+  <li><a href="{% url 'login' %}">Login</a></li>
+  <li><a href="{% url 'customerregistration' %}">Registration</a></li>
+</ul>
+{% endblock navelementlast %}
+
+
+{% block main-content %}
+
+<section id="contact">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <div class="company-info">
+          <h3>BuyNow Information</h3>
+          <p>Address: Wadki, Yavatmal, 445308</p>
+          <p>Phone: +91 7517252644</p>
+          <p>Email: buynow@gmail.com</p>
+        </div>
+        <form id="contactForm" method="post">
+          {% csrf_token %} 
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+    
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+    
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required>
+    
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" name="subject" required>
+    
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+    
+          <button href="{% url 'contact' %}" type="submit">Send Message</button>
+        </form>
+        <div id="confirmationMessage"></div>
+        <div id="map"></div>
+      </div>
+</section>
+{% endblock main-content %}

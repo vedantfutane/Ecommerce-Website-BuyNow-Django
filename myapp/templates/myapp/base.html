@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyNow Website | {% block title %}{% endblock title %}</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}"/>
+
+
+</head>
+<body>
+
+<section id="header">
+  <a href="#">
+    <img src="{% static "myapp/image/logo.png" %}" class="logo"></a>
+
+    
+    <div>
+      <ul id="nav">
+    {% if request.user.is_authenticated %}
+      {% block navelement %}{% endblock navelement %}
+    </ul>
+  </div>
+        <div id="mobile">
+          <a href="cart.html"><i class="fas fa-cart-plus">&nbsp;</i></a>
+          <i id="bar" class="fas fa-outdent"></i>
+        </div>
+  
+    <div id="searchContainer">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">          <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+    </div>
+    
+  <div class="dropdown-center">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      {{request.user}}
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+      <li><a class="dropdown-item" href="{% url 'checkout' %}">Orders</a></li>
+      <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
+      <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
+    </ul>
+  </div>
+
+    {% else %}
+      {% block navelementlast %}{% endblock navelementlast %}
+    {% endif %}
+
+  </section>
+
+    {% block header %}{% endblock header %}
+    {% block slide %}{% endblock slide %}
+    {% block feature %}{% endblock feature %}
+    {% block main-content %}{% endblock main-content %}
+    {% block payment-gateway %}{% endblock payment-gateway %}
+    
+
+    <section id="foot">
+      <div class="footer">
+        <img src="{% static "myapp/image/logo.png" %}" alt="Logo" class="footer-logo">
+        
+        <div class="footer-sections">
+          <div class="footer-section">
+            <h3>About</h3>
+            <ul>
+              <li><a href="#">Company Overview</a></li>
+              <li><a href="#">Mission and Vision</a></li>
+              <li><a href="#">Team</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <ul>
+              <li><a href="#">Phone: 7517252644</a></li>
+              <li><a href="#">Email: buynow@gmail.com</a></li>
+              <li><a href="#">Address: Wadki, Yavatmal, 445308</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Install App</h3>
+            <ul>
+              <li><a href="#">iOS App</a></li>
+              <li><a href="#">Android App</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Terms and Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">License</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="social-media-icons">
+          <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+        
+        <p class="copyright">&copy; 2023 Veda's Website. All rights reserved.</p>
+        <p class="copyright">Powered by <a href="#" target="blank">BuyNow</a></p>
+      </div>
+    </section>
+    
+
+  
+    <script src="{% static 'myapp/js/script.js' %}"></script>
+    
+</body>
+</html>

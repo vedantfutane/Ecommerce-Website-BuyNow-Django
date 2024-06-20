@@ -1,0 +1,54 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block title %}Upcoming{% endblock title %}
+
+{% block navelement %}
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a class="active" href="{% url 'upcoming' %}">Upcomings</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li id="bar_cart"><a href="{% url 'showcart' %}"><i class="fas fa-cart-plus">&nbsp;</i>Cart</a></li>
+      <a href="#" id="cross"><i class="fas fa-times"></i></a>
+  
+{% endblock navelement %}
+
+{% block navelementlast %}
+<ul id="nav">
+  <li><a href="login.html">Login</a></li>
+  <li><a href="{% url 'customerregistration' %}">Registration</a></li>
+</ul>
+{% endblock navelementlast %}
+
+
+{% block main-content %}
+
+<section id="upcoming">
+  <div class="container">
+    <h1>Upcoming Offers and Brands</h1>
+    <div class="offer">
+      <img src="{% static "myapp/image/upcomings/offer1.jpg" %}" alt="Offer 1">
+      <h2>Special Discount</h2>
+      <p>Get 30% off on selected items. Limited time offer!</p>
+    </div>
+    <div class="offer">
+      <img src="{% static "myapp/image/upcomings/offer2.png" %}" alt="Offer 2">
+      <h2>New Arrivals</h2>
+      <p>Discover our latest collection of trendy fashion.</p>
+    </div>
+    <div class="brand">
+      <img src="{% static "myapp/image/upcomings/brand1.jpg" %}" alt="Brand 1">
+      <h2>Realme New Arrivals</h2>
+    </div>
+    <div class="brand">
+      <img src="{% static "myapp/image/upcomings/brand2.jpg" %}" alt="Brand 2">
+      <h2>Electronics Store</h2>
+    </div>
+  </div>
+</section>
+
+<section id="upbanner" class="section-margin">
+  <img src="{% static "myapp/image/upcomings/banner.jpg" %}" alt="banner">
+</section>
+
+{% endblock main-content %}
+

@@ -1,0 +1,53 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block navelement %}
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'upcoming' %}">Upcomings</a></li>
+    <li><a class="active" href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li id="bar_cart"><a href="{% url 'showcart' %}"><i class="fas fa-cart-plus">&nbsp;</i>Cart</a></li>
+      <a href="#" id="cross"><i class="fas fa-times"></i></a>
+ 
+{% endblock navelement %}
+
+{% block navelementlast %}
+<ul id="nav">
+  <li><a href="{% url 'login' %}">Login</a></li>
+  <li><a href="{% url 'customerregistration' %}">Registration</a></li>
+</ul>
+{% endblock navelementlast %}
+
+{% block main-content %}
+<section id="about">
+    <div class="container">
+      <h1>About Us</h1>
+      <div class="company-info">
+        <img src="{% static "myapp/image/logo.png" %}" alt="Company Logo">
+        <p>Welcome to BuyNow, your one-stop destination for all your shopping needs. At BuyNow, we are committed to providing you with an unparalleled online shopping experience. With a vast range of products, competitive prices, and exceptional customer service, we aim to make your shopping journey enjoyable and convenient.</p>
+
+        <p><h4>Our Mission:</h4>
+            At BuyNow, our mission is to bring you the best shopping experience possible. We strive to offer a wide selection of high-quality products at affordable prices, making it easy for you to find exactly what you're looking for. We are dedicated to building long-lasting relationships with our customers by exceeding their expectations and delivering excellent service.</p>
+            
+        <p><h4>Our Products:</h4>
+            Explore our extensive catalog featuring an array of products across various categories. Whether you're searching for electronics, fashion, home decor, beauty products, or fitness equipment, we have it all. Our team carefully curates the products to ensure that they meet our quality standards, providing you with reliable options to choose from.</p>
+            
+        <p><h4>Competitive Prices:</h4>
+            We understand the importance of finding great deals while shopping. That's why we strive to offer competitive prices on all our products. By working directly with manufacturers and suppliers, we cut out unnecessary intermediaries and pass the savings onto you. You can shop with confidence, knowing that you're getting the best value for your money.</p>
+            
+        <p><h4>Secure Shopping:</h4>
+            At BuyNow, we take your online security seriously. We use advanced encryption and security measures to protect your personal information, ensuring that your shopping experience is safe and secure. Your privacy is important to us, and we are committed to maintaining the confidentiality of your data.</p>
+            
+        <p><h4>Exceptional Customer Service:</h4>
+            Our dedicated customer service team is always here to assist you. Whether you have a question about a product, need help with an order, or require any kind of support, our friendly and knowledgeable representatives are ready to provide you with prompt assistance. We value your feedback and continuously strive to improve our services based on your suggestions.</p>
+            
+        <p><h4>Fast and Reliable Delivery:</h4>
+            We understand that receiving your purchases in a timely manner is crucial. That's why we work with trusted shipping partners to ensure fast and reliable delivery of your orders. We provide tracking information so that you can easily monitor the progress of your shipment.</p>
+            
+        <p>Thank you for choosing BuyNow as your preferred online shopping destination. We are excited to serve you and look forward to helping you discover the perfect products that enhance your lifestyle. Happy shopping!
+        </p>
+      </div>
+    </div>
+  </section>
+{% endblock main-content %}

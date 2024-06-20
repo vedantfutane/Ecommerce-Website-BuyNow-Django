@@ -1,0 +1,65 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block title %}Home|Shop{% endblock title %}
+
+
+{% block navelement %}
+
+    <li><a class="active" href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'upcoming' %}">Upcomings</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li id="bar_cart"><a href="{% url 'showcart' %}"><i class="fas fa-cart-plus">&nbsp;</i>Cart</a></li>
+      <a href="#" id="cross"><i class="fas fa-times"></i></a>
+  
+{% endblock navelement %}
+
+{% block navelementlast %}
+<ul id="nav">
+  <li><a href="{% url 'login' %}">Login</a></li>
+  <li><a href="{% url 'customerregistration' %}">Registration</a></li>
+</ul>
+{% endblock navelementlast %}
+
+{% block main-content %}
+
+<div class="container">
+   {% for prod in product %}
+  
+   <div class="row mt-5">
+     <div class="col-md-6">
+       <img class="img-fluid" src="{{ prod.product_image.url }}" alt="{{ prod.title }}">
+     </div>
+     <div class="col-md-6">
+       <h1 class="mb-3">{{ product.title }}</h1>
+       <h3 class="mb-2" style="color:green;"><strong>Discounted Price:</strong> {{ prod.discounted_price }}</h3>
+       <h4 class="mb-2" style="color:red;"><strong>Original Price:</strong> <s>{{ prod.selling_price }}</s></h4>
+ 
+       <section class="mb-4">
+         <h3>Product Info:</h3>
+         <p>{{ prod.description }}</p>
+       </section>
+ 
+       
+       <section class="mb-4">
+         <h3>Product Application:</h3>
+         <p>{{ prod.prodapp }}</p>
+       </section>
+
+       
+        <form action="/add-to-cart" class="d-inline">
+          <input type="hidden" name="product_id" value={{prod.id}}>
+          <button type="submit" class=" btn btn-light p-1 m-1 btn-lg text-decoration-none text-black border-black">Add to Cart</button>
+        </form>
+          <div class="btn btn-dark p-1 m-1 btn-lg"><a href="{% url 'showcart' %}" class="text-decoration-none text-white" style="margin:15px;">Buy Now</a></div>
+       
+      
+     </div>
+   </div>
+   <br>
+   {% endfor %}
+ </div>
+
+
+{% endblock main-content %}
+
