@@ -2,6 +2,8 @@
 
 BuyNow is a full-featured e-commerce website built with Django, providing a platform for users to browse and purchase products online.
 
+<img width="955" alt="1" src="https://github.com/user-attachments/assets/573a4c61-50f3-4e5c-9bb7-970bfa8bda4f">
+
 ## Features
 
 - User Authentication (Sign up, Login, Logout)
